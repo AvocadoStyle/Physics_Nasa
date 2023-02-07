@@ -21,7 +21,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
 
   const submitLaunch = useCallback(async (e) => {
     e.preventDefault();
-    // setPendingLaunch(true); 
+    setPendingLaunch(true); 
     const data = new FormData(e.target);
     const launchDate = new Date(data.get("launch-day"));
     const mission = data.get("mission-name");
@@ -34,16 +34,15 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       target,
     });
     
-    const success = false;
-    if(response){
+    let success = false;
+    if(response)
       success = true
-    }
     if (success) {
       getLaunches();
       setTimeout(() => {
         setPendingLaunch(false);
         onSuccessSound();
-      }, 800);
+      }, 1000);
     } else {
       onFailureSound();
     }
@@ -57,6 +56,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
     if (success) {
       getLaunches();
       onAbortSound();
+      
     } else {
       onFailureSound();
     }
