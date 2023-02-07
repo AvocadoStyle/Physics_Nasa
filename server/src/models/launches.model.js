@@ -37,12 +37,28 @@ function setLaunch(launchDate, rocket, mission, target){
         }
         launch.launchDate = launchDate
         launch.destination = target
+        launch.success = true
         launches.set(launch.flightNumber, launch)
         return true;
     } catch(e){
         return false;
     }
 
+}
+
+function deleteLaunch(idFlightNumber){
+    try{
+        let launch = launches.get(Number(idFlightNumber))
+        if(launch){
+            launch.launchDate = new Date()
+            launch.success = false;
+            launch.upcoming = false;
+        }
+
+        return true;
+    }catch(e){
+        return false;
+    }
 }
 
 
@@ -60,4 +76,5 @@ module.exports = {
     getLaunches,
     getLaunch,
     setLaunch,
+    deleteLaunch,
 }

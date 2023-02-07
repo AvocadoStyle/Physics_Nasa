@@ -45,8 +45,27 @@ async function httpSubmitLaunch(launch) {
 
 
 async function httpAbortLaunch(id) {
-  // TODO: Once API is ready.
-  // Delete launch with given ID.
+  const requestOptions = {
+    method: 'DELETE',
+    // headers: { 'Content-Type': 'application/json','Authorization': token },
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({flightNumber: ''+id})
+  };
+  try{
+    const response = await fetch(`${url}/launches`, requestOptions);
+    // if(response.status != 200){
+      // throw new Error("already-in-use");
+    // }
+    const data = await response.json();
+    if(response.status === 404){
+      // alert(data)
+      return false;
+    }
+    // alert('set successfully')
+    return true;
+  } catch(e){
+    return false; 
+  }
 }
 
 export {
