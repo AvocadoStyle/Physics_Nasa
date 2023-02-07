@@ -19,3 +19,14 @@ start the react app
 ```
 npm start
 ```
+
+### All together scripts
+#### from the root directory: `/physics_nasa`
+install client&server
+```
+npm run install-all
+```
+run all
+```
+npm run watch
+```

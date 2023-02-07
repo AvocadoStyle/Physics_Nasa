@@ -1,0 +1,30 @@
+{
+  "name": "physics_nasa",
+  "version": "1.0.0",
+  "description": "install express\r ```\r npm install express\r ```\r nodemon active project\r ```\r npm install --save-dev nodemon\r ```",
+  "main": "index.js",
+  "scripts": {
+    "install-server": "npm install --prefix server",
+    "install-client": "npm install --prefix client",
+    "install-all": "npm run install-server && npm run install-client",
+    "server": "npm run watch --prefix server",
+    "client": "npm start --prefix client",
+    "deploy": "npm run build --prefix client && npm start --prefix server",
+    "watch": "npm run client | npm run server",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AvocadoStyle/Physics_Nasa.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AvocadoStyle/Physics_Nasa/issues"
+  },
+  "homepage": "https://github.com/AvocadoStyle/Physics_Nasa#readme",
+  "dependencies": {
+    "morgan": "^1.10.0"
+  }
+}
