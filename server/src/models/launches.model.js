@@ -49,10 +49,9 @@ function setLaunch(launchDate, rocket, mission, target){
 
 function __isUpcomingLaunch(launchDate){
     let launchDateObj = new Date(launchDate)
-    let currentDateObj = new Date()
-    let currentDateStr = `${currentDateObj.getDate()} ${Number(currentDateObj.getMonth())+1} ${currentDateObj.getFullYear()}`
-    currentDateObj = new Date(currentDateStr)
-
+    let currentDateObj = new Date(Date.now())
+    // let currentDateStr = `${Number(currentDateObj.getMonth())+1} ${currentDateObj.getDate()}, ${currentDateObj.getFullYear()}`
+    // currentDateObj = new Date(currentDateStr)
     return launchDateObj > currentDateObj
 }
 

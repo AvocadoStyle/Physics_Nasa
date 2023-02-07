@@ -21,18 +21,21 @@ async function httpSubmitLaunch(launch) {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(launch)
     };
-  
-    const response = await fetch(`${url}/launches`, requestOptions);
-    // if(response.status != 200){
-      // throw new Error("already-in-use");
-    // }
-    const data = await response.json();
-    if(response.status == 404){
-      alert(data)
-      return false;
+    try{
+      const response = await fetch(`${url}/launches`, requestOptions);
+      // if(response.status != 200){
+        // throw new Error("already-in-use");
+      // }
+      const data = await response.json();
+      if(response.status === 404){
+        // alert(data)
+        return false;
+      }
+      // alert('set successfully')
+      return true;
+    } catch(e){
+      return false; 
     }
-    alert('set successfully')
-    return true;
 };
 
 

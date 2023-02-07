@@ -34,16 +34,15 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
       target,
     });
     
-    const success = false;
-    if(response){
+    let success = false;
+    if(response)
       success = true
-    }
     if (success) {
       getLaunches();
       setTimeout(() => {
         setPendingLaunch(false);
         onSuccessSound();
-      }, 800);
+      }, 100);
     } else {
       onFailureSound();
     }
@@ -57,6 +56,7 @@ function useLaunches(onSuccessSound, onAbortSound, onFailureSound) {
     if (success) {
       getLaunches();
       onAbortSound();
+      
     } else {
       onFailureSound();
     }
