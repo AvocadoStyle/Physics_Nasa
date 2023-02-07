@@ -27,7 +27,12 @@ async function httpSubmitLaunch(launch) {
       // throw new Error("already-in-use");
     // }
     const data = await response.json();
-    return true
+    if(response.status == 404){
+      alert(data)
+      return false;
+    }
+    alert('set successfully')
+    return true;
 };
 
 
