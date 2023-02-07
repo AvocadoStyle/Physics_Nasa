@@ -14,7 +14,7 @@ function postLaunch(req, res){
     if(setLaunch(launchDate, rocket, mission, target))
         return getAllLaunches(req, res)
     else
-        return res.status(404).json({"msg": "error"})
+        return res.status(404).json({error: 'bad parameters, try again'})
 }
 
 

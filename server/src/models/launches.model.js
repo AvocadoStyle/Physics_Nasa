@@ -25,11 +25,16 @@ function getLaunch(id){
 
 function setLaunch(launchDate, rocket, mission, target){
     try{
+        if(!launchDate || !rocket || !mission || !target)
+            return false;
         let launch = {}
-        num += 1
+        num += 1 
         launch.flightNumber = num
         launch.mission = mission
         launch.rocket = rocket
+        if(new Date(launchDate).toString() === 'Invalid Date'){
+            return false;
+        }
         launch.launchDate = launchDate
         launch.destination = target
         launches.set(launch.flightNumber, launch)
