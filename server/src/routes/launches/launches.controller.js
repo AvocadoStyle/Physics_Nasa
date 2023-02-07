@@ -1,14 +1,15 @@
 const {
     launches,
     getLaunches,
-    setLaunch
+    setLaunch,
+    deleteLaunch,
 } = require('../../models/launches.model')
 
-function getAllLaunches(req, res){
+function httpGetAllLaunches(req, res){
     return res.status(200).json(getLaunches())
 }
 
-function postLaunch(req, res){
+function httpPostLaunch(req, res){
     let values = req.body;
     let { launchDate, rocket, mission, target } = values;
     if(setLaunch(launchDate, rocket, mission, target))
@@ -17,9 +18,17 @@ function postLaunch(req, res){
         return res.status(404).json({error: 'bad parameters, try again'})
 }
 
-
+function httpDeleteLaunch(req, res){
+    let values = req.body;
+    let { flightNumber } = values;
+    if(deleteLaunch(flightNumber))
+        return res.status(200).json({ok: 200})
+    else
+        return res.status(404).json({error: 'bad parameters, try again'})
+}
 
 module.exports = {
-    getAllLaunches,
-    postLaunch
+    httpGetAllLaunches,
+    httpPostLaunch,
+    httpDeleteLaunch,
 }
